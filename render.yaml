@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: scamshield-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5001
+      - key: MONGO_URI
+        fromDatabase:
+          name: scamshield-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: SENDGRID_FROM_EMAIL
+        value: noreply@yourdomain.com
+      - key: FRONTEND_URL
+        value: http://localhost:5173
+
+databases:
+  - name: scamshield-db
+    plan: free
+    databaseName: scamshield
+    user: scamshield
+
