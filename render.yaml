@@ -29,7 +29,7 @@ services:
       - key: SENDGRID_FROM_EMAIL
         value: noreply@yourdomain.com
       - key: FRONTEND_URL
-        value: http://localhost:5173
+        value: https://scamshiild-2.onrender.com
 
 databases:
   - name: scamshield-db
